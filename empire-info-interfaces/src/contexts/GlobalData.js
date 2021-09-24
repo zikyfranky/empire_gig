@@ -278,7 +278,6 @@ async function getGlobalData(ethPrice, oldEthPrice) {
         oneDayData.totalVolumeUSD,
         twoDayData.totalVolumeUSD
       )
-      console.log('oneDayVolumeUSD', oneDayVolumeUSD)
       const [oneWeekVolume, weeklyVolumeChange] = get2DayPercentChange(
         data.totalVolumeUSD,
         oneWeekData.totalVolumeUSD,

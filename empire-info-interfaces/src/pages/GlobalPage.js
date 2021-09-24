@@ -52,7 +52,6 @@ function GlobalPage() {
   const allTokens = useAllTokenData()
   const transactions = useGlobalTransactions()
   const { totalLiquidityUSD, oneDayVolumeUSD, volumeChangeUSD, liquidityChangeUSD } = useGlobalData()
-  console.log('oneDayVolumeUSD', oneDayVolumeUSD, formattedNum(oneDayVolumeUSD))
   // breakpoints
   const below800 = useMedia('(max-width: 800px)')
 
