@@ -4,8 +4,8 @@ import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD, UNTRACKED_PAIRS } from './helpers'
 
 let WBNB_ADDRESS = "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83";
-let BUSD_WBNB_PAIR = "0x15443197c97009737e8e9fe3eac321affcba65c1"; // created block 589414
-let USDT_WBNB_PAIR = "0x6a38723e0acb329c887ed9f180d0e3913aef4ddc"; // created block 648115
+let BUSD_WBNB_PAIR = "0x15443197c97009737e8e9fe3eac321affcba65c1"; // created block 
+let USDT_WBNB_PAIR = "0x6a38723e0acb329c887ed9f180d0e3913aef4ddc"; // created block 
 
 export function getBnbPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
