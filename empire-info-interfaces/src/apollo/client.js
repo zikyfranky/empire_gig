@@ -4,7 +4,8 @@ import { HttpLink } from 'apollo-link-http'
 
 export const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/0x369d/empireftm',
+    // uri: 'https://api.thegraph.com/subgraphs/name/0x369d/empireftm',
+    uri: "https://api.thegraph.com/subgraphs/name/zikyfranky/empire-exchange"
   }),
   cache: new InMemoryCache(),
   shouldBatch: true,
