@@ -144,7 +144,7 @@ function TopTokenList({ tokens, itemMax = 10, useTracked = false }) {
       tokens &&
       Object.keys(tokens)
         .filter((key) => {
-          return !TOKEN_BLACKLIST.includes(key)
+          return !TOKEN_BLACKLIST.includes(key) && tokens[key].chartData === undefined
         })
         .map((key) => tokens[key])
     )
