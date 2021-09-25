@@ -144,7 +144,7 @@ function TopTokenList({ tokens, itemMax = 10, useTracked = false }) {
       tokens &&
       Object.keys(tokens)
         .filter((key) => {
-          return !TOKEN_BLACKLIST.includes(key) && tokens[key].chartData === undefined
+          return !TOKEN_BLACKLIST.includes(key)
         })
         .map((key) => tokens[key])
     )
@@ -172,10 +172,11 @@ function TopTokenList({ tokens, itemMax = 10, useTracked = false }) {
             ? (sortDirection ? -1 : 1) * 1
             : (sortDirection ? -1 : 1) * -1
         })
+        .filter(val => val.id)
         .slice(itemMax * (page - 1), page * itemMax)
     )
   }, [formattedTokens, itemMax, page, sortDirection, sortedColumn])
-
+  console.log(filteredList);
   const ListItem = ({ item, index }) => {
     return (
       <DashGrid style={{ height: '48px' }} focus={true}>
