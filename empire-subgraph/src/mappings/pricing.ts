@@ -3,14 +3,14 @@ import { Pair, Token, Bundle } from '../types/schema'
 import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD, UNTRACKED_PAIRS } from './helpers'
 
-let WBNB_ADDRESS = "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83";
-let BUSD_WBNB_PAIR = "0x15443197c97009737e8e9fe3eac321affcba65c1"; // created block 
-let USDT_WBNB_PAIR = "0x6a38723e0acb329c887ed9f180d0e3913aef4ddc"; // created block 
+let WBNB_ADDRESS = "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"; // WFTM
+let BUSD_WBNB_PAIR = "0xc644d16d607b921ed12b2fE2F22e7cFaDC3E0742"; // fUSDT/WFTM created block 17125160 
+let USDT_WBNB_PAIR = "0x6a38723e0acb329c887ed9f180d0e3913aef4ddc"; // USDC/WFTM not created yet
 
 export function getBnbPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
   let usdtPair = Pair.load(USDT_WBNB_PAIR); // usdt is token0
-  let busdPair = Pair.load(BUSD_WBNB_PAIR); // busd is token1
+  let busdPair = Pair.load(BUSD_WBNB_PAIR); // fusd is token0
 
   if (busdPair !== null && usdtPair !== null) {
     let totalLiquidityBNB = busdPair.reserve0.plus(usdtPair.reserve1);
@@ -22,7 +22,7 @@ export function getBnbPriceInUSD(): BigDecimal {
       return ZERO_BD;
     }
   } else if (busdPair !== null) {
-    return busdPair.token1Price;
+    return busdPair.token0Price;
   } else if (usdtPair !== null) {
     return usdtPair.token0Price;
   } else {
@@ -32,7 +32,9 @@ export function getBnbPriceInUSD(): BigDecimal {
 
 // token where amounts should contribute to tracked volume and liquidity
 let WHITELIST: string[] = [
-  WBNB_ADDRESS
+  WBNB_ADDRESS,
+  "0x049d68029688eAbF473097a2fC38ef61633A3C7A", // fUSDT
+  "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75", // USDC
   // "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c", // WBNB
   // "0xe9e7cea3dedca5984780bafc599bd69add087d56", // BUSD
   // "0x55d398326f99059ff775485246999027b3197955", // USDT
@@ -97,6 +99,11 @@ export function getTrackedVolumeUSD(
   let bundle = Bundle.load('1')
   let price0 = token0.derivedETH.times(bundle.ethPrice)
   let price1 = token1.derivedETH.times(bundle.ethPrice)
+
+  // dont count tracked volume on these pairs - usually rebass tokens
+  if (UNTRACKED_PAIRS.includes(pair.id)) {
+    return ZERO_BD
+  }
 
   // both are whitelist tokens, take average of both amounts
   if (WHITELIST.includes(token0.id) && WHITELIST.includes(token1.id)) {
