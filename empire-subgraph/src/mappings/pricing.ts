@@ -4,7 +4,7 @@ import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD, UNTRACKED_PAIRS } from './helpers'
 
 let WBNB_ADDRESS = "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"; // WFTM
-let BUSD_WBNB_PAIR = "0xc644d16d607b921ed12b2fE2F22e7cFaDC3E0742"; // fUSDT/WFTM created block 17125160 
+let BUSD_WBNB_PAIR = "0xc644d16d607b921ed12b2fe2f22e7cfadc3e0742"; // fUSDT/WFTM created block 17125160 
 let USDT_WBNB_PAIR = "0x6a38723e0acb329c887ed9f180d0e3913aef4ddc"; // USDC/WFTM not created yet
 
 export function getBnbPriceInUSD(): BigDecimal {
@@ -35,20 +35,7 @@ let WHITELIST: string[] = [
   WBNB_ADDRESS,
   "0x049d68029688eAbF473097a2fC38ef61633A3C7A", // fUSDT
   "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75", // USDC
-  // "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c", // WBNB
-  // "0xe9e7cea3dedca5984780bafc599bd69add087d56", // BUSD
-  // "0x55d398326f99059ff775485246999027b3197955", // USDT
-  // "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d", // USDC
-  // "0x23396cf899ca06c4472205fc903bdb4de249d6fc", // UST
-  // "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c", // BTCB
-  // "0x2170ed0880ac9a755fd29b2688956bd959f933f8", // ETH
-  // "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82", // CAKE
-  // "0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5", // BAKE
-  // "0x190b589cf9Fb8DDEabBFeae36a813FFb2A702454", // BDO
-  // "0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402", // DOT
-  // "0x4fa7163e153419e0e1064e418dd7a99314ed27b6", // HOT CROSS
-  // "0xc9849e6fdb743d08faee3e34dd2d1bc69ea11a51", //PANCAKE BUNNY
-  // "0x4b0f1812e5df2a09796481ff14017e6005508003" // TWT
+  "0xd46df541148932690b81092f600f35208afd4325", // Fantom Prism Network Token
 ];
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
