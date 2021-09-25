@@ -51,6 +51,7 @@ const GlobalChart = ({ display }) => {
           if (item.date > utcStartTime) {
             return item
           } else {
+            // eslint-disable-next-line array-callback-return
             return
           }
         })
