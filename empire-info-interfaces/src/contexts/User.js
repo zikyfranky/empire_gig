@@ -6,7 +6,7 @@ import {
   USER_POSITIONS,
   USER_HISTORY,
   PAIR_DAY_DATA_BULK,
-  MINING_POSITIONS,
+  // MINING_POSITIONS,
 } from '../apollo/queries'
 import { useTimeframe, useStartTimestamp } from './Application'
 import dayjs from 'dayjs'
